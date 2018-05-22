@@ -174,7 +174,8 @@ malloc_zone_check函数定义
         return ok;
     }
 
-zone->introspect->check(zone)
+zone->introspect->check(zone)
+
 在前边说过zone结构体，introspect是zone结构体中的成员
 
     static struct malloc_introspection_t default_zone_introspect = {
