@@ -77,3 +77,40 @@
             mach_msg_trailer_t      trailer;
     } mach_msg_complex;
 
+# 发送消息
+
+消息的发送和接收都是同一个API
+
+    extern mach_msg_return_t    
+    mach_msg(
+        mach_msg_header_t *msg,
+        mach_msg_option_t option,//可以设置为收消息还是发消息等类型
+        mach_msg_size_t send_size,
+        mach_msg_size_t rcv_size,
+        mach_port_name_t rcv_name,
+        mach_msg_timeout_t timeout,
+        mach_port_name_t notify
+    );
+
+# port
+
+每一条Mach Message都是从一个port发送到另外一个port，而每一个port都有自己的权限。
+
+消息从某个端口发送到另一个端口，每一个端口都可以接受来自任意端口的消息，但是只能有一个指定接受者
+
+端口的权限如下
+
+| MACH_PORT_RIGHT_| 含义                         |
+| :------------:  | :----------------------:    |
+| SEND            | 向这个端口发送消息，允许多个发送者|
+| RECEIVE         | 从这个端口读取消息             |
+| SEND_ONE        | 只能发送一次消息               |
+| PORT_SET        | 同时拥有多个端口的接受权限      |
+| DEAD_NAME       | 端口在SEND_ONE之后用完了权限   |
+
+特殊的ports
+
+    host port：代表正在运行该task的整台机器的port。
+    task port: 正在运行的task本身的port。
+    bootstrap port : 和bootstrap server连接着的一个port。
+
