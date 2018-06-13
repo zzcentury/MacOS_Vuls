@@ -19,17 +19,17 @@
 
 #### 1.安装MacOS虚拟机
 
-![](./Images/1.1.png)
+![](../Images/1.1.png)
 
 #### 2.安装对应版本内核调试工具包(KDK)
 
-![](./Images/1.2.png)
+![](../Images/1.2.png)
 
 #### 3.关闭SIP
 
 关闭虚拟机的SIP，开机的时候按Command+R进入恢复模式，然后在终端输入csrutil disable。重启之后可以用csrutil status命令查看是否成功关闭。 
 
-![](./Images/1.3.png)
+![](../Images/1.3.png)
 
 #### 4.内核替换
 
@@ -45,7 +45,7 @@
 
 debug=0x141含义如下图所示
 
-![](./Images/1.4.png)
+![](../Images/1.4.png)
 
 kext-dev-mode=1允许加载未签名kext，kcsuffix=development指定加载上面拷贝的kernel.development，pmuflags=1关闭定时器，-v显示内核加载信息
 
@@ -63,7 +63,7 @@ kext-dev-mode=1允许加载未签名kext，kcsuffix=development指定加载上�
 
 为了将调试器连接到虚拟机，我们需要一些关于其网络配置的信息
 
-![](./Images/1.5.png)
+![](../Images/1.5.png)
 
 ### 对于主机中的操作
 
@@ -71,7 +71,7 @@ kext-dev-mode=1允许加载未签名kext，kcsuffix=development指定加载上�
 
 Xcode中自带了lldb,选择适合自己mac版本的xcode版本进行安装，我这里选择8.3.3
 
-![](./Images/1.6.png)
+![](../Images/1.6.png)
 
 #### 2.安装内核调试工具包
 
@@ -85,7 +85,7 @@ Xcode中自带了lldb,选择适合自己mac版本的xcode版本进行安装，�
 
 虚拟机会等待调试器链接
 
-![](./Images/1.7.png)
+![](../Images/1.7.png)
 
 #### 2.启动LLDB并将目标设置为位于KDK中的(本地)内核二进制文件
 
@@ -94,7 +94,7 @@ $lldb
 
 如果遇到以下问题
 
-![](./Images/1.8.png)
+![](../Images/1.8.png)
 
 就执行以下命令
 
@@ -104,7 +104,7 @@ $lldb
 
 再重新启动LLDB并将目标设置为位于KDK中的(本地)内核二进制文件
 
-![](./Images/1.9.png)
+![](../Images/1.9.png)
 
 #### 3.连接虚拟机
 
@@ -136,7 +136,7 @@ $lldb
 
 每个虚拟机文件都包含一个可以编辑的.vmx配置文件.vmwarevm（确保虚拟机在编辑时没有运行）
 
-![](./Images/1.10.png)
+![](../Images/1.10.png)
 
 在文本编辑器中打开它并添加以下行：
 
